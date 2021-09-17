@@ -1,16 +1,18 @@
 package com.atom.gestao.transacoes.sbgtbdbaseatomgestaotransacoes.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
-import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 @Data
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Embeddable
-public class PayloadPix {
+public class Payload{
 
     private String data;
     private String descricao;
@@ -20,7 +22,7 @@ public class PayloadPix {
     private String idPagamento;
     private String nsu;
     private String numeroQrCode;
-    private boolean salvarContrato;
+    private boolean salvarContato;
     private Integer seqTransacao;
     private BigDecimal valor;
     @Embedded

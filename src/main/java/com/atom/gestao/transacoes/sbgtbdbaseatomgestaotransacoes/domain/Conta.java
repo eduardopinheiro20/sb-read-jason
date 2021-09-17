@@ -10,9 +10,11 @@ import javax.persistence.Embeddable;
 @Embeddable
 @AllArgsConstructor
 @NoArgsConstructor
-public class Favorecido {
+public class Conta {
 
-    private Conta conta;
-    private String documento;
-    private String nome;
+    private Integer agencia;
+    private String numero;
+    private Participante participante;
+    private Integer tipoConta;
+
 }

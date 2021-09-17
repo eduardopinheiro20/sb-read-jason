@@ -26,11 +26,11 @@ public class SbGtbdBaseAtomGestaoTransacoesApplication {
 
 			ObjectMapper mapper = new ObjectMapper();
 			TypeReference<List<Pix>> typeReference = new TypeReference<List<Pix>>(){};
-			InputStream inputStream = TypeReference.class.getResourceAsStream("json/pix.json");
+			InputStream inputStream = TypeReference.class.getResourceAsStream("/json/pix.json");
 
 			try {
 				List<Pix> transacaoPix = mapper.readValue(inputStream, typeReference);
-				pGestaoTransacoesService.save((Pix) transacaoPix);
+				pGestaoTransacoesService.save(transacaoPix);
 				System.out.println("Pix salvo!");
 
 			} catch (IOException e) {
@@ -38,6 +38,4 @@ public class SbGtbdBaseAtomGestaoTransacoesApplication {
 			}
 		};
 	}
-
-;
 }

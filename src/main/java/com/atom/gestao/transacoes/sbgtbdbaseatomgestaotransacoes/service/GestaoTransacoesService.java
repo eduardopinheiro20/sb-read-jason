@@ -21,4 +21,8 @@ public class GestaoTransacoesService {
         return gestaoTransacoesRepository.save(transacaoPix);
     }
 
+    public Iterable<Pix> save(List<Pix> transacaoPix ) {
+        return gestaoTransacoesRepository.saveAll(transacaoPix);
+    }
+
 }
