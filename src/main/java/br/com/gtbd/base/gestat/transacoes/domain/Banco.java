@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Banco {
 
-    private Long identificador;
+    private Long idBanco;
     private String codigoBanco;
-    private String nome;
+    private String nomeBanco;
 }

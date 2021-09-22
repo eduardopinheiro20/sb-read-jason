@@ -9,9 +9,9 @@ import lombok.*;
 @NoArgsConstructor
 public class DadosPagador {
 
-    private String nomeSacador;
-    private String documentoSacador;
-    private String tipoSacador;
+    private String nomePagador;
+    private String documentoPagador;
+    private String tipoPagador;
     private ContaPagador contaPagador;
 
 }

@@ -19,7 +19,7 @@ public class PayloadTed {
     private Integer codigoLiquidacao;
     private Integer codigoSistemaOrigem;
     private Integer codigoTipoContaFavorecido;
-    private Integer codigoTopoContaRementente;
+    private Integer codigoTipoContaRementente;
     private Integer codigoTipoTransacao;
     private LocalDateTime dataTransferencia;
     private String descricaoTransacao;
@@ -31,7 +31,7 @@ public class PayloadTed {
     private Integer numeroContaFavorecido;
     private Integer numeroContaRemetente;
     private String numeroCpfCnpjFavorecido;
-    private boolean salvarFavorecido;
+    private Boolean salvarFavorecido;
     private String tipoPessoaFavorecido;
     private BigDecimal valorTransacao;
 

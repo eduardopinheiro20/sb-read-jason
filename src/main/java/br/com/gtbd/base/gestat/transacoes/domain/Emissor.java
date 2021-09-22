@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 public class Emissor {
 
-    private Long identificador;
-    private String codigoBanco;
-    private String nome;
+    private Long idEmissor;
+    private String codigoBancoEmissor;
+    private String nomeEmissor;
 }

@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Tef {
 
-    private Integer idTrasacao;
-    private Integer idFraude;
+    private Integer idTransacao;
+    private Integer idFraudes;
     private Integer idEfetivacao;
     private Integer status;
     private PayloadTef payloadTef;
