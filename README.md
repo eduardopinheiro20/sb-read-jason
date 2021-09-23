@@ -1,4 +1,6 @@
-Json para add Pix
+Json para add Pix:
+
+
 	{   
 		"idTransacao":12345, 
 		"idFraudes":123456, 
@@ -36,8 +38,12 @@ Json para add Pix
 		} 
 		
 	}
+	
+	
 
-Json para add Ted
+Json para add Ted:
+
+
 {
    "idTransacao":12345,
    "idFraudes":123456,
@@ -52,8 +58,8 @@ Json para add Ted
       "codigoTipoTransacao": 1,
       "dataTransferencia":"2019-12-10",
       "descricaoTransacao":"Pagamento de aluguel.",
-      "identificadorBancoFavorecido":33,
-      "identificadorBancoRemetente":21,
+      "idBancoFavorecido":33,
+      "idBancoRemetente":21,
       "nomeFavorecido":"João Silva",
       "numeroAgenciaFavorecido":720,
       "numeroAgenciaRemetente":7190,
@@ -66,7 +72,7 @@ Json para add Ted
    }
 },
 
-Json para add Tef
+Json para add Tef:
 {
    "idTransacao":12345,
    "idFraudes":123456,
@@ -91,6 +97,62 @@ Json para add Tef
     }
 }
 
-Json para add Boleto
+Json para add Boleto:
+
+{
+   "idTransacao":12345,
+   "idFraudes":123456,
+   "idEfetivacao":12345678,
+   "status":"”APROVADA_FRAUDES”",
+   "payload":{
+      "contaOrigem":12345,
+      "bancoOrigem":161,
+      "agenciaOrigem":2020,
+      "cartaoSelecionado":{
+         "bandeira":"VISA",
+         "codigoTipo":0,
+         "dataVencimento":"string",
+         "ultimosDigitos":"string"
+      },
+      "codigoBarras":"string",
+      "codigoSistemaOrigem":0,
+      "codigoTipoPagamento":0,
+      "dataEfetivacao":"string",
+      "formaPagamento":"CARTAO",
+      "linhaDigitavel":"string",
+      "valorPagamento":0,
+      "valorPagamentoIOF":0,
+      "beneficiario":{
+         "nome":"Caique Reis",
+         "documento":"000000000099",
+         "tipo":"FISICO"
+      },
+      "sacadorAvalista":{
+         "nome":"Joao da Silva",
+         "documento":"000000000088",
+         "tipo":"JURIDICO"
+      },
+      "dadosDoPagador":{
+         "nome":"Cleiton Souza",
+         "documento":"000000000077",
+         "tipo":"JURIDICO",
+         "conta":{
+            "banco":{
+               "identificador":123,
+               "codigoBanco":"1234",
+               "nome":"Banco BV"
+            },
+            "agencia":"1234",
+            "conta":"1234"
+         }
+      },
+      "emissor":{
+         "identificador":123,
+         "codigoBanco":"1234",
+         "nome":"Banco BV"
+      }
+   }
+}
+
 
 
