@@ -18,12 +18,12 @@ public class PayloadTed {
     private Integer codigoLiquidacao;
     private Integer codigoSistemaOrigem;
     private Integer codigoTipoContaFavorecido;
-    private Integer codigoTipoContaRementente;
+    private Integer codigoTipoContaRemetente;
     private Integer codigoTipoTransacao;
     private String dataTransferencia;
     private String descricaoTransacao;
     private Integer idBancoFavorecido;
-    private Integer idBancoRementente;
+    private Integer idBancoRemetente;
     private String nomeFavorecido;
     private Integer numeroAgenciaFavorecido;
     private Integer numeroAgenciaRemetente;

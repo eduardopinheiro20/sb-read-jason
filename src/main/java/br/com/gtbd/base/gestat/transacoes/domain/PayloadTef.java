@@ -19,7 +19,7 @@ public class PayloadTef {
     private Integer codigoLiquidacao;
     private Integer codigoSistemaOrigem;
     private Integer codigoTipoContaFavorecido;
-    private Integer codigoTipoContaRementente;
+    private Integer codigoTipoContaRemetente;
     private Integer codigoTipoTransacao;
     private String dataTransferencia;
     private String descricaoTransacao;

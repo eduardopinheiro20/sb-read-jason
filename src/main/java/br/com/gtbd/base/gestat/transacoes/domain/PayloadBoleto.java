@@ -17,17 +17,17 @@ public class PayloadBoleto {
     private Integer bancoOrigem;
     private Integer agenciaOrigem;
     private CartaoSelecionado cartaoSelecionado;
-    private String codigoBarra;
-    private Integer codigoSitemaOrigem;
+    private String codigoBarras;
+    private Integer codigoSistemaOrigem;
     private Integer codigoTipoPagamento;
-    private String dataEfeticacao;
+    private String dataEfetivacao;
     private String formaPagamento;
     private String linhaDigitavel;
     private BigDecimal valorPagamento;
-    private BigDecimal valorpagamentoIOF;
+    private BigDecimal valorPagamentoIOF;
     private Beneficiario beneficiario;
     private SacadorAvalista sacadorAvalista ;
-    private DadosPagador dadosPagdor;
+    private DadosDoPagador dadosDoPagador;
     private Emissor emissor;
 
 }
