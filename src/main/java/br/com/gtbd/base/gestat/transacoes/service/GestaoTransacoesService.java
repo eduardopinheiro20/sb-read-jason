@@ -2,8 +2,7 @@ package br.com.gtbd.base.gestat.transacoes.service;
 
 import br.com.gtbd.base.gestat.transacoes.domain.Boleto;
 import br.com.gtbd.base.gestat.transacoes.domain.Pix;
-import br.com.gtbd.base.gestat.transacoes.domain.Ted;
-import br.com.gtbd.base.gestat.transacoes.domain.Tef;
+import br.com.gtbd.base.gestat.transacoes.domain.TedTef;
 import br.com.gtbd.base.gestat.transacoes.firebase.FirebaseInitializer;
 import br.com.gtbd.base.gestat.transacoes.repository.GestaoTransacoesRepository;
 import com.google.api.core.ApiFuture;
@@ -54,59 +53,53 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
     }
 
     @Override
-    public Boolean addTed(final Ted pTed) {
-
+    public Boolean addTedTef(final TedTef pTedTef) {
         Map<String, Object> docData = new HashMap<>();
-        docData.put("idTransacao", pTed.getIdTransacao());
-        docData.put("idFraudes", pTed.getIdFraudes());
-        docData.put("idEfeticacao", pTed.getIdEfetivacao());
-        docData.put("status", pTed.getStatus());
-        docData.put("codigoFinalidade", pTed.getPayloadTed().getCodigoFinalidade());
-        docData.put("codigoLiquidacao", pTed.getPayloadTed().getCodigoLiquidacao());
-        docData.put("codigoSistemaOrigem", pTed.getPayloadTed().getCodigoSistemaOrigem());
-        docData.put("codigoTipoContaFavorecido", pTed.getPayloadTed().getCodigoTipoContaFavorecido());
-        docData.put("codigoTipoContaRementente", pTed.getPayloadTed().getCodigoTipoContaRementente());
-        docData.put("codigoTipoTransacao", pTed.getPayloadTed().getCodigoTipoTransacao());
-        docData.put("dataTransferencia", pTed.getPayloadTed().getDataTransferencia());
-        docData.put("descricaoTransacao", pTed.getPayloadTed().getDescricaoTransacao());
-        docData.put("indentificadorBancoFavorecido", pTed.getPayloadTed().getIndentificadorBancoFavorecido());
-        docData.put("identificadorBancoRementente", pTed.getPayloadTed().getIdentificadorBancoRementente());
-        docData.put("nomeFavorecido", pTed.getPayloadTed().getNomeFavorecido());
-        docData.put("numeroAgenciaFavorecido", pTed.getPayloadTed().getNumeroAgenciaFavorecido());
-        docData.put("numeroAgenciaRemetente", pTed.getPayloadTed().getNumeroAgenciaRemetente());
-        docData.put("numeroContaFavorecido", pTed.getPayloadTed().getNumeroContaFavorecido());
-        docData.put("numeroContaRemetente", pTed.getPayloadTed().getNumeroContaRemetente());
-        docData.put("numeroCpfCnpjFavorecido", pTed.getPayloadTed().getNumeroCpfCnpjFavorecido());
-        docData.put("salvarFavorecido", pTed.getPayloadTed().getSalvarFavorecido());
-        docData.put("tipoPessoaFavorecido", pTed.getPayloadTed().getTipoPessoaFavorecido());
-        docData.put("valorTransacao", pTed.getPayloadTed().getValorTransacao());
+        docData.put("idTransacao", pTedTef.getIdTransacao());
+        docData.put("idFraudes", pTedTef.getIdFraudes());
+        docData.put("idEfeticacao", pTedTef.getIdEfetivacao());
+        docData.put("status", pTedTef.getStatus());
 
-        return resultadoApi(docData);
+        if(pTedTef.getPayloadTed() != null && pTedTef.getPayloadTed().getCodigoTipoTransacao() == 1) {
 
-    }
+            docData.put("codigoFinalidade", pTedTef.getPayloadTed().getCodigoFinalidade());
+            docData.put("codigoLiquidacao", pTedTef.getPayloadTed().getCodigoLiquidacao());
+            docData.put("codigoSistemaOrigem", pTedTef.getPayloadTed().getCodigoSistemaOrigem());
+            docData.put("codigoTipoContaFavorecido", pTedTef.getPayloadTed().getCodigoTipoContaFavorecido());
+            docData.put("codigoTipoContaRementente", pTedTef.getPayloadTed().getCodigoTipoContaRementente());
+            docData.put("codigoTipoTransacao", pTedTef.getPayloadTed().getCodigoTipoTransacao());
+            docData.put("dataTransferencia", pTedTef.getPayloadTed().getDataTransferencia());
+            docData.put("descricaoTransacao", pTedTef.getPayloadTed().getDescricaoTransacao());
+            docData.put("indentificadorBancoFavorecido", pTedTef.getPayloadTed().getIdBancoFavorecido());
+            docData.put("identificadorBancoRementente", pTedTef.getPayloadTed().getIdBancoRementente());
+            docData.put("nomeFavorecido", pTedTef.getPayloadTed().getNomeFavorecido());
+            docData.put("numeroAgenciaFavorecido", pTedTef.getPayloadTed().getNumeroAgenciaFavorecido());
+            docData.put("numeroAgenciaRemetente", pTedTef.getPayloadTed().getNumeroAgenciaRemetente());
+            docData.put("numeroContaFavorecido", pTedTef.getPayloadTed().getNumeroContaFavorecido());
+            docData.put("numeroContaRemetente", pTedTef.getPayloadTed().getNumeroContaRemetente());
+            docData.put("numeroCpfCnpjFavorecido", pTedTef.getPayloadTed().getNumeroCpfCnpjFavorecido());
+            docData.put("salvarFavorecido", pTedTef.getPayloadTed().getSalvarFavorecido());
+            docData.put("tipoPessoaFavorecido", pTedTef.getPayloadTed().getTipoPessoaFavorecido());
+            docData.put("valorTransacao", pTedTef.getPayloadTed().getValorTransacao());
 
-    @Override
-    public Boolean addTef(final Tef pTef) {
-        Map<String, Object> docData = new HashMap<>();
-        docData.put("idTransacao", pTef.getIdTransacao());
-        docData.put("idFraudes", pTef.getIdFraudes());
-        docData.put("idEfeticacao", pTef.getIdEfetivacao());
-        docData.put("status", pTef.getStatus());
-        docData.put("codigoBancoFavorecido", pTef.getPayloadTef().getCodigoBancoFavorecido());
-        docData.put("codigoBancoRemetente", pTef.getPayloadTef().getCodigoBancoRemetente());
-        docData.put("codigoLiquidacao", pTef.getPayloadTef().getCodigoLiquidacao());
-        docData.put("codigoSistemaOrigem", pTef.getPayloadTef().getCodigoSistemaOrigem());
-        docData.put("codigoTipoContaFavorecido", pTef.getPayloadTef().getCodigoTipoContaFavorecido());
-        docData.put("codigoTipoContaRementente", pTef.getPayloadTef().getCodigoTipoContaRementente());
-        docData.put("codigoTipoTransacao", pTef.getPayloadTef().getCodigoTipoTransacao());
-        docData.put("dataTransferencia", pTef.getPayloadTef().getDataTransferencia());
-        docData.put("descricaoTransacao", pTef.getPayloadTef().getDescricaoTransacao());
-        docData.put("numeroAgenciaFavorecido", pTef.getPayloadTef().getNumeroAgenciaFavorecido());
-        docData.put("numeroAgenciaRemetente", pTef.getPayloadTef().getNumeroAgenciaRemetente());
-        docData.put("numeroContaFavorecido", pTef.getPayloadTef().getNumeroContaFavorecido());
-        docData.put("numeroContaRemetente", pTef.getPayloadTef().getNumeroContaRemetente());
-        docData.put("salvarFavorecido", pTef.getPayloadTef().getSalvarFavorecido());
-        docData.put("valorTransacao", pTef.getPayloadTef().getValorTransacao());
+        } else {
+
+            docData.put("codigoBancoFavorecido", pTedTef.getPayloadTef().getCodigoBancoFavorecido());
+            docData.put("codigoBancoRemetente", pTedTef.getPayloadTef().getCodigoBancoRemetente());
+            docData.put("codigoLiquidacao", pTedTef.getPayloadTef().getCodigoLiquidacao());
+            docData.put("codigoSistemaOrigem", pTedTef.getPayloadTef().getCodigoSistemaOrigem());
+            docData.put("codigoTipoContaFavorecido", pTedTef.getPayloadTef().getCodigoTipoContaFavorecido());
+            docData.put("codigoTipoContaRementente", pTedTef.getPayloadTef().getCodigoTipoContaRementente());
+            docData.put("codigoTipoTransacao", pTedTef.getPayloadTef().getCodigoTipoTransacao());
+            docData.put("dataTransferencia", pTedTef.getPayloadTef().getDataTransferencia());
+            docData.put("descricaoTransacao", pTedTef.getPayloadTef().getDescricaoTransacao());
+            docData.put("numeroAgenciaFavorecido", pTedTef.getPayloadTef().getNumeroAgenciaFavorecido());
+            docData.put("numeroAgenciaRemetente", pTedTef.getPayloadTef().getNumeroAgenciaRemetente());
+            docData.put("numeroContaFavorecido", pTedTef.getPayloadTef().getNumeroContaFavorecido());
+            docData.put("numeroContaRemetente", pTedTef.getPayloadTef().getNumeroContaRemetente());
+            docData.put("salvarFavorecido", pTedTef.getPayloadTef().getSalvarFavorecido());
+            docData.put("valorTransacao", pTedTef.getPayloadTef().getValorTransacao());
+        }
 
         return resultadoApi(docData);
     }
@@ -149,8 +142,6 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
         docData.put("idEmissor", pBoleto.getPayloadBoleto().getEmissor().getIdEmissor());
         docData.put("codigoBancoEmissor", pBoleto.getPayloadBoleto().getEmissor().getCodigoBancoEmissor());
         docData.put("nomeEmissor", pBoleto.getPayloadBoleto().getEmissor().getNomeEmissor());
-
-
 
         return resultadoApi(docData);
     }

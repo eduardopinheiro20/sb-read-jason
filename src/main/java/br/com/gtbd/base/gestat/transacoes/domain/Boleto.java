@@ -6,11 +6,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Boleto {
+public class Boleto extends TransacoesGeneric {
 
-    private Long idTransacao;
-    private Long idFraudes;
-    private Long idEfetivacao;
-    private String status;
     private PayloadBoleto payloadBoleto;
 }

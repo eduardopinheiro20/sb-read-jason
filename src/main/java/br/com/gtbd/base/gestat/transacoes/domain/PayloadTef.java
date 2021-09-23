@@ -21,10 +21,10 @@ public class PayloadTef {
     private Integer codigoTipoContaFavorecido;
     private Integer codigoTipoContaRementente;
     private Integer codigoTipoTransacao;
-    private LocalDateTime dataTransferencia;
+    private String dataTransferencia;
     private String descricaoTransacao;
-    private Integer numeroAgenciaFavorecido;
-    private Integer numeroAgenciaRemetente;
+    private String numeroAgenciaFavorecido;
+    private String numeroAgenciaRemetente;
     private Integer numeroContaFavorecido;
     private Integer numeroContaRemetente;
     private Boolean salvarFavorecido;

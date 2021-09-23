@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -21,10 +20,10 @@ public class PayloadTed {
     private Integer codigoTipoContaFavorecido;
     private Integer codigoTipoContaRementente;
     private Integer codigoTipoTransacao;
-    private LocalDateTime dataTransferencia;
+    private String dataTransferencia;
     private String descricaoTransacao;
-    private Integer indentificadorBancoFavorecido;
-    private Integer identificadorBancoRementente;
+    private Integer idBancoFavorecido;
+    private Integer idBancoRementente;
     private String nomeFavorecido;
     private Integer numeroAgenciaFavorecido;
     private Integer numeroAgenciaRemetente;
@@ -34,6 +33,5 @@ public class PayloadTed {
     private Boolean salvarFavorecido;
     private String tipoPessoaFavorecido;
     private BigDecimal valorTransacao;
-
 
 }

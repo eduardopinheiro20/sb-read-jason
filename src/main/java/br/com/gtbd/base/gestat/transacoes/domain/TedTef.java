@@ -9,11 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Tef {
+public class TedTef extends TransacoesGeneric {
 
-    private Integer idTransacao;
-    private Integer idFraudes;
-    private Integer idEfetivacao;
-    private Integer status;
+    private PayloadTed payloadTed;
     private PayloadTef payloadTef;
 }

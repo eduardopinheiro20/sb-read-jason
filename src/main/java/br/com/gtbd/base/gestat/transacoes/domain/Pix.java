@@ -7,12 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pix {
-
-    private Long idTransacao;
-    private Long idFraudes;
-    private Long idEfetivacao;
-    private String status;
+public class Pix extends TransacoesGeneric {
 
     private PayloadPix payloadPix;
 
