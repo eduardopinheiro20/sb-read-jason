@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransacoesGeneric {
+public class GestaoTransacoes {
 
     private String idTransacao;
     private Long idFraudes;

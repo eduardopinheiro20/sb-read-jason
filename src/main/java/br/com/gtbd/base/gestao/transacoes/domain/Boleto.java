@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Boleto extends TransacoesGeneric {
+public class Boleto extends GestaoTransacoes {
 
     private PayloadBoleto payloadBoleto;
 }

@@ -3,7 +3,7 @@ package br.com.gtbd.base.gestao.transacoes.service;
 import br.com.gtbd.base.gestao.transacoes.domain.Boleto;
 import br.com.gtbd.base.gestao.transacoes.domain.Pix;
 import br.com.gtbd.base.gestao.transacoes.domain.TedTef;
-import br.com.gtbd.base.gestao.transacoes.domain.TransacoesGeneric;
+import br.com.gtbd.base.gestao.transacoes.domain.GestaoTransacoes;
 import br.com.gtbd.base.gestao.transacoes.firebase.FirebaseInitializer;
 import br.com.gtbd.base.gestao.transacoes.repository.GestaoTransacoesRepository;
 import com.google.api.core.ApiFuture;
@@ -24,16 +24,16 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
     private FirebaseInitializer firebase;
 
     @Override
-    public List<TransacoesGeneric> listTransacoes() {
-        List<TransacoesGeneric> response = new ArrayList<>();
-        TransacoesGeneric transacoesGeneric;
+    public List<GestaoTransacoes> listTransacoes() {
+        List<GestaoTransacoes> response = new ArrayList<>();
+        GestaoTransacoes gestaoTransacoes;
 
         ApiFuture<QuerySnapshot> querySnapshotApiFuture = getCollection().get();
         try {
             for (DocumentSnapshot doc : querySnapshotApiFuture.get().getDocuments()) {
-                transacoesGeneric = doc.toObject(TransacoesGeneric.class);
-                transacoesGeneric.setIdTransacao(doc.getId());
-                response.add(transacoesGeneric);
+                gestaoTransacoes = doc.toObject(GestaoTransacoes.class);
+                gestaoTransacoes.setIdTransacao(doc.getId());
+                response.add(gestaoTransacoes);
             }
             return response;
         } catch (Exception pE) {
@@ -44,9 +44,6 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
     @Override
     public Boolean addPix(final Pix pPix) {
         Map<String, Object> docData = new HashMap<>();
-//        docData.put("idTransacao", pPix.getIdTransacao());
-//        docData.put("idFraudes", pPix.getIdFraudes());
-//        docData.put("idEfetivacao", pPix.getIdEfetivacao());
         docData.put("status", pPix.getStatus());
         docData.put("codigoChave", pPix.getPayloadPix().getChavePix().getCodigoChave());
         docData.put("tipoChave", pPix.getPayloadPix().getChavePix().getTipoChave());
@@ -76,9 +73,6 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
     @Override
     public Boolean addTedTef(final TedTef pTedTef) {
         Map<String, Object> docData = new HashMap<>();
-//        docData.put("idTransacao", pTedTef.getIdTransacao());
-//        docData.put("idFraudes", pTedTef.getIdFraudes());
-//        docData.put("idEfeticacao", pTedTef.getIdEfetivacao());
         docData.put("status", pTedTef.getStatus());
 
         if(pTedTef.getPayloadTed() != null && pTedTef.getPayloadTed().getCodigoTipoTransacao() == 1) {
@@ -128,9 +122,6 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
     @Override
     public Boolean addBoleto(final Boleto pBoleto) {
         Map<String, Object> docData = new HashMap<>();
-//        docData.put("idTransacao", pBoleto.getIdTransacao());
-//        docData.put("idFraudes", pBoleto.getIdFraudes());
-//        docData.put("idEfeticacao", pBoleto.getIdEfetivacao());
         docData.put("status", pBoleto.getStatus());
         docData.put("contaOrigem", pBoleto.getPayloadBoleto().getContaOrigem());
         docData.put("bancoOrigem", pBoleto.getPayloadBoleto().getBancoOrigem());
@@ -167,6 +158,29 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
         return resultadoApi(docData);
     }
 
+    @Override
+    public Boolean atualizarProtocoloFraudes(String id, GestaoTransacoes pTransacoes) {
+        Map<String, Object> docData = new HashMap<>();
+        docData.put("status", pTransacoes.getStatus());
+        ApiFuture<WriteResult> writeResultApiFuture = getCollection().document(id).set(docData);
+
+       return resultadoApi(docData);
+    }
+
+    @Override
+    public Boolean deleteTransacao(final String id) {
+        ApiFuture<WriteResult> writeResultApiFuture = getCollection().document(id).delete();
+
+        try {
+            if (null != writeResultApiFuture.get()) {
+                return Boolean.TRUE;
+            }
+            return Boolean.FALSE;
+        } catch (Exception e) {
+            return Boolean.FALSE;
+        }
+    }
+
     private Boolean resultadoApi(final Map<String, Object> pDocData) {
 
         CollectionReference transacoesPix = getCollection();
@@ -181,7 +195,6 @@ public class GestaoTransacoesService implements GestaoTransacoesRepository{
             return Boolean.FALSE;
         }
     }
-
 
     public CollectionReference getCollection() {
         return firebase.getFirestore().collection("gestao-transacoes");

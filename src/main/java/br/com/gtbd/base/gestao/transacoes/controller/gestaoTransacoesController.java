@@ -1,6 +1,7 @@
 package br.com.gtbd.base.gestao.transacoes.controller;
 
 import br.com.gtbd.base.gestao.transacoes.domain.Boleto;
+import br.com.gtbd.base.gestao.transacoes.domain.GestaoTransacoes;
 import br.com.gtbd.base.gestao.transacoes.domain.Pix;
 import br.com.gtbd.base.gestao.transacoes.domain.TedTef;
 import br.com.gtbd.base.gestao.transacoes.service.GestaoTransacoesService;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("/api")
@@ -34,6 +37,16 @@ public class gestaoTransacoesController {
     @PostMapping("/boleto")
     public ResponseEntity addBoleto(@RequestBody Boleto pBoleto) {
         return new ResponseEntity(gestaoTransacaoService.addBoleto(pBoleto), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/atualizarProtocoloFraudes")
+    public ResponseEntity update(@PathVariable(value = "id") String id, @RequestBody GestaoTransacoes pTransacoes) {
+        return new ResponseEntity(gestaoTransacaoService.atualizarProtocoloFraudes(id, pTransacoes), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}/excluir")
+    public  ResponseEntity excluir(@PathVariable(value = "id")String id) {
+        return  new ResponseEntity(gestaoTransacaoService.deleteTransacao(id), HttpStatus.OK);
     }
 
 }

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TedTef extends TransacoesGeneric {
+public class TedTef extends GestaoTransacoes {
 
     private PayloadTed payloadTed;
     private PayloadTef payloadTef;

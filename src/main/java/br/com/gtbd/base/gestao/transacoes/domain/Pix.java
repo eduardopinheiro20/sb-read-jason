@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pix extends TransacoesGeneric {
+public class Pix extends GestaoTransacoes {
 
     private PayloadPix payloadPix;
 
