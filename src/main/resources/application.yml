@@ -1,0 +1,4 @@
+com:
+    base:
+      dataBaseUrl: https://gestao-transacoes.firebaseio.com/
+      serviceKeyUrl: ./serviceAccountKey.json
